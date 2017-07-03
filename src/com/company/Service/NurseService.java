@@ -293,13 +293,91 @@ public class NurseService {
         ArrayList<Nurse> nurseList = new ArrayList<>();
         ArrayList<Integer> nurseAreaList = new ArrayList<>();
 
-        Nurse tempNurse;
         Connection conn = DBconnect.getConn();
         PreparedStatement prestate;
 
         String sql = "select * from app_nurse where name =?";
-        prestate = conn.prepareStatement(sql);
+        prestate = (PreparedStatement) conn.prepareStatement(sql);
         prestate.setString(1, name);
+        ResultSet result = prestate.executeQuery();
+
+
+        while (result.next()) {
+
+            int nurseID = result.getInt("id");
+            System.out.println(nurseID);
+            String nurseName = result.getString("name");
+            int nurseSex = result.getInt("sex");
+            int nurseAge = result.getInt("age");
+            int nurseWorkAge = result.getInt("work_age");
+            int nursePrice = result.getInt("price");
+            int nurseEvaluation = result.getInt("evaluation");
+            String nursePhone = result.getString("phone");
+            int nurseHeight = result.getInt("height");
+            int nurseWeight = result.getInt("weight");
+            String nurseBloodType = result.getString("blood_type");
+            String nurseNation = result.getString("nation");
+            String nurseIdentity = result.getString("identity");
+            String nurseConstellation = result.getString("constellation");
+            String nurseAnimal = result.getString("animal");
+            String nurseDescription = result.getString("description");
+            String nurseArea = result.getString("area");
+            nurseAreaList = NurseService.getNurseArea(nurseID);
+
+            Nurse tempNurse = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge,
+                    nurseArea, nurseEvaluation, nursePrice, nurseAreaList, nurseHeight,
+                    nurseWeight, nurseBloodType, nurseNation, nurseIdentity,
+                    nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
+            tempNurse.setNurseId(nurseID);
+
+            System.out.println(tempNurse.getNurseBloodType());
+
+            nurseList.add(tempNurse);
+
+        }
+
+
+        return nurseList;
+
+    }
+
+    static public ArrayList<Nurse> searchTypeNurse(int area) throws SQLException {
+
+        ArrayList<Nurse> nurseList = new ArrayList<>();
+        ArrayList<Integer> nurseAreaList = new ArrayList<>();
+
+        Connection conn = DBconnect.getConn();
+        PreparedStatement prestate;
+
+        String sql = "select id from app_range where area =?";
+        prestate = (PreparedStatement) conn.prepareStatement(sql);
+        prestate.setInt(1, area);
+        ResultSet result = prestate.executeQuery();
+        
+        while (result.next()) {
+
+            int nurseID = result.getInt("id");
+            Nurse tempNurse = NurseService.getNurseById(nurseID);
+            tempNurse.setNurseId(nurseID);
+            nurseList.add(tempNurse);
+
+        }
+
+        return nurseList;
+
+    }
+
+    static public Nurse getNurseById(int id) throws SQLException {
+
+        Nurse nurse = new Nurse();
+        ArrayList<Integer> nurseAreaList = new ArrayList<>();
+
+        Connection conn = DBconnect.getConn();
+        PreparedStatement prestate;
+
+        String sql = "select * from app_nurse where id =?";
+        prestate = (PreparedStatement) conn.prepareStatement(sql);
+        prestate.setInt(1, id);
         ResultSet result = prestate.executeQuery();
 
         while (result.next()) {
@@ -323,16 +401,15 @@ public class NurseService {
             String nurseArea = result.getString("area");
             nurseAreaList = NurseService.getNurseArea(nurseID);
 
-            tempNurse = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge,
+            nurse = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge,
                     nurseArea, nurseEvaluation, nursePrice, nurseAreaList, nurseHeight,
                     nurseWeight, nurseBloodType, nurseNation, nurseIdentity,
                     nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
-            tempNurse.setNurseId(nurseID);
+            nurse.setNurseId(nurseID);
 
         }
 
-
-        return nurseList;
+        return nurse;
 
     }
 

@@ -175,5 +175,25 @@ public class OrderService {
         return orderList;
     }
 
+    static public boolean changeOrderSituation(int id, int situation) throws SQLException {
+
+        boolean flag = false;
+        Connection conn = DBconnect.getConn();
+
+        PreparedStatement prestate;
+
+        String sql = "update app_order set situation=? where id =?";
+        prestate = (PreparedStatement) conn.prepareStatement(sql);
+        prestate.setInt(1, situation);
+        prestate.setInt(2, id);
+
+        int i = prestate.executeUpdate();//返回更新数目的条数
+        if (i == 1) flag = true;
+        else flag = false;
+
+        return flag;
+
+    }
+
 
 }
