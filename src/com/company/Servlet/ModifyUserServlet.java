@@ -26,6 +26,10 @@ public class ModifyUserServlet extends HttpServlet {
         String name =jsonObject.getString("name");
         String avatar =jsonObject.getString("avatar");
         User user = new User();
+        user.setId(id);
+        user.setName(name);
+        user.setPassword(password);
+        user.setAvatar(avatar);
         StringBuffer stringBuffer = new StringBuffer();
         try {
             if(UserService.modifyUserInfomation(user)){

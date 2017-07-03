@@ -29,8 +29,8 @@ public class AddNurseServlet extends HttpServlet{
         int workAge = jsonObject.getInt("nurseWorkAge");
         int price = jsonObject.getInt("nursePrice");
         int evalution = jsonObject.getInt("nurseEvaluate");
-        String phone = jsonObject.getString("nursePhone;");
-        int height = jsonObject.getInt("nurseHeigt;");
+        String phone = jsonObject.getString("nursePhone");
+        int height = jsonObject.getInt("nurseHeight");
         int weight = jsonObject.getInt("nurseWeight");
         String bloodType = jsonObject.getString("nurseBloodType");
         String nation = jsonObject.getString("nurseNation");

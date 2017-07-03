@@ -30,10 +30,10 @@ public class OrderService {
         PreparedStatement prestate;
 
         if (orderSituation.equals("new")) {
-            String sql = "select * from app_order where u_id =? and (situtation = 0 or situation = 1 or situation = 4 or situation = 5)";
+            String sql = "select * from app_order where u_id =? and (situation = 0 or situation = 1 or situation = 4 or situation = 5)";
             prestate = conn.prepareStatement(sql);
         } else {
-            String sql = "select * from app_order where u_id =? and (situtation = 2 or situation = 3)";
+            String sql = "select * from app_order where u_id =? and (situation = 2 or situation = 3)";
             prestate = conn.prepareStatement(sql);
         }
 
@@ -51,6 +51,9 @@ public class OrderService {
             int choseNurse = result.getInt("chose_nurse");
             int nurseID = result.getInt("n_id");
             int patientID = result.getInt("p_id");
+            System.out.println(id);
+            System.out.println(nurseID);
+            System.out.println(patientID);
 
             tempUser = GeneralService.getUser(userId);
             tempNurse = GeneralService.getNurse(nurseID);
@@ -68,6 +71,7 @@ public class OrderService {
             tempOrder.setPatient(tempPatient);
 
             orderList.add(tempOrder);
+
         }
 
         return orderList;
@@ -107,10 +111,10 @@ public class OrderService {
         prestate.setString(10, userID);
 
         int result = prestate.executeUpdate();
-
-        while(result != 0){
+        if (result == 1){
             flag = true;
         }
+        System.out.println(flag);
 
         return flag;
 
@@ -128,10 +132,10 @@ public class OrderService {
         PreparedStatement prestate;
 
         if (orderSituation.equals("new")) {
-            String sql = "select * from app_order where situtation = 0 or situation = 1 or situation = 4 or situation = 5";
+            String sql = "select * from app_order where situation = 0 or situation = 1 or situation = 4 or situation = 5";
             prestate = conn.prepareStatement(sql);
         } else {
-            String sql = "select * from app_order where situtation = 2 or situation = 3";
+            String sql = "select * from app_order where situation = 2 or situation = 3";
             prestate = conn.prepareStatement(sql);
         }
 

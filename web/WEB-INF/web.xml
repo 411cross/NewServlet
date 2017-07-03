@@ -59,6 +59,11 @@
         <servlet-name>getNurseList</servlet-name>
         <servlet-class>com.company.Servlet.GetNurseServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminGetOrder</servlet-name>
+        <servlet-class>com.company.Servlet.AdminGetOrderServlet</servlet-class>
+    </servlet>
+
 
 
 
@@ -142,6 +147,11 @@
     <servlet-mapping>
         <servlet-name>getNurseList</servlet-name>
         <url-pattern>/getnurselist</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>adminGetOrder</servlet-name>
+        <url-pattern>/admingetorder</url-pattern>
     </servlet-mapping>
 
 

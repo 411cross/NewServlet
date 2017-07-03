@@ -32,9 +32,6 @@ public class AddFamilyRelationServlet extends HttpServlet {
         stringBuffer.append(Message);
         resp.getOutputStream().write(stringBuffer.toString().getBytes("utf-8"));
 
-
-
-
-
     }
+
 }

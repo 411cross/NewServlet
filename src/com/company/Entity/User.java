@@ -4,6 +4,7 @@ package com.company.Entity;
  * Created by Administrator on 2017/6/29.
  */
 public class User {
+
     private String id;
     private String password;
     private String name;

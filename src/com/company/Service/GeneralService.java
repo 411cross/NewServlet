@@ -18,6 +18,11 @@ import java.sql.ResultSet;
 /**
  * Created by derrickJ on 2017/6/29.
  */
+
+/**
+ * 改继承
+ */
+
 public class GeneralService {
 
     static public User getUser(String userID) {
@@ -62,7 +67,7 @@ public class GeneralService {
 
     static public Patient getPatient(int patientID) {
 
-        Patient patient = null;
+        Patient patient = new Patient(); //不能声明的时候赋值null，会爆空指针错误
 
         Connection conn = DBconnect.getConn();
 
@@ -150,7 +155,7 @@ public class GeneralService {
                 nurse.setNursePrice(price);
                 nurse.setNurseEvaluate(evaluation);
                 nurse.setNursePhone(phone);
-                nurse.setNurseHeigt(height);
+                nurse.setNurseHeight(height);
                 nurse.setNurseWeight(weight);
                 nurse.setNurseBloodType(bloodType);
                 nurse.setNurseNation(nation);

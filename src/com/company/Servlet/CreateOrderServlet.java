@@ -23,8 +23,10 @@ public class CreateOrderServlet extends HttpServlet {
 
         Gson gson = new Gson();
         JSONObject jsonObject = GeneralService.toJsonObject(req);
-        String jsonString = jsonObject.toString();
+        String jsonString = jsonObject.getString("order");
+        System.out.println(jsonString);
         Order order = gson.fromJson(jsonString, Order.class);
+        System.out.println(order.getId());
         StringBuffer stringBuffer = new StringBuffer();
 
         try {

@@ -25,16 +25,18 @@ public class UserService {
 
         PreparedStatement prestate;
 
-        String sql = "insert into app_user(id,password,name) values(?,?,?)";
+        String sql = "insert into app_user(id,password,name,avatar) values(?,?,?,?)";
         prestate = (PreparedStatement) conn.prepareStatement(sql);
         prestate.setString(1, id);
         prestate.setString(2, pass);
         prestate.setString(3, name);
+        prestate.setString(4, "test_avatar");
 
         int i = prestate.executeUpdate();   //返回更新数目的条数
         if (i == 1) flag = true;
         else flag = false;
 
+        System.out.println(flag);
         return flag;
     }
 
@@ -48,14 +50,14 @@ public class UserService {
 
         PreparedStatement prestate;
 
-        String sql = "update app_user set passord=?,name=?,avatar=? where id =?";
+        String sql = "update app_user set password=?,name=?,avatar=? where id =?";
         prestate = (PreparedStatement) conn.prepareStatement(sql);
         prestate.setString(1, user.getPassword());
         prestate.setString(2, user.getName());
         prestate.setString(3, user.getAvatar());
         prestate.setString(4, user.getId());
 
-        int i = prestate.executeUpdate();   //返回更新数目的条数
+        int i = prestate.executeUpdate();//返回更新数目的条数
         if (i == 1) flag = true;
         else flag = false;
 
@@ -131,9 +133,6 @@ public class UserService {
             }
         }
 
-
-
     }
-
 
 }

@@ -15,7 +15,7 @@ public class Nurse {
     private int nurseEvaluate; //评分
     private int nursePrice; //个人价格
     private ArrayList<Integer> nurseProtectArea; //护理范围
-    private int nurseHeigt; //身高
+    private int nurseHeight; //身高
     private int nurseWeight; //体重
     private String nurseBloodType; //血型
     private String nurseNation;  //民族
@@ -29,7 +29,7 @@ public class Nurse {
 
     }
 
-    public Nurse(String nurseName, int nurseSex, int nurseAge, int nurseWorkAge, String nurseArea, int nurseEvaluate, int nursePrice, ArrayList<Integer> nurseProtectArea, int nurseHeigt, int nurseWeight, String nurseBloodType, String nurseNation, String nurseIdentity, String nurseConstellation, String nurseAnimal, String nurseDescription, String nursePhone) {
+    public Nurse(String nurseName, int nurseSex, int nurseAge, int nurseWorkAge, String nurseArea, int nurseEvaluate, int nursePrice, ArrayList<Integer> nurseProtectArea, int nurseHeight, int nurseWeight, String nurseBloodType, String nurseNation, String nurseIdentity, String nurseConstellation, String nurseAnimal, String nurseDescription, String nursePhone) {
         this.setNurseName(nurseName);
         this.setNurseSex(nurseSex);
         this.setNurseAge(nurseAge);
@@ -38,7 +38,7 @@ public class Nurse {
         this.setNurseEvaluate(nurseEvaluate);
         this.setNursePrice(nursePrice);
         this.setNurseProtectArea(nurseProtectArea);
-        this.setNurseHeigt(nurseHeigt);
+        this.setNurseHeight(nurseHeight);
         this.setNurseWeight(nurseWeight);
         this.setNurseBloodType(nurseBloodType);
         this.setNurseNation(nurseNation);
@@ -122,12 +122,12 @@ public class Nurse {
         this.nurseProtectArea = nurseProtectArea;
     }
 
-    public int getNurseHeigt() {
-        return nurseHeigt;
+    public int getNurseHeight() {
+        return nurseHeight;
     }
 
-    public void setNurseHeigt(int nurseHeigt) {
-        this.nurseHeigt = nurseHeigt;
+    public void setNurseHeight(int nurseHeight) {
+        this.nurseHeight = nurseHeight;
     }
 
     public int getNurseWeight() {

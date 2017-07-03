@@ -29,8 +29,8 @@ public class ModifyNurseServlet extends HttpServlet {
         int workAge = jsonObject.getInt("nurseWorkAge");
         int price = jsonObject.getInt("nursePrice");
         int evalution = jsonObject.getInt("nurseEvaluate");
-        String phone = jsonObject.getString("nursePhone;");
-        int height = jsonObject.getInt("nurseHeigt;");
+        String phone = jsonObject.getString("nursePhone");
+        int height = jsonObject.getInt("nurseHeight");
         int weight = jsonObject.getInt("nurseWeight");
         String bloodType = jsonObject.getString("nurseBloodType");
         String nation = jsonObject.getString("nurseNation");
@@ -48,7 +48,6 @@ public class ModifyNurseServlet extends HttpServlet {
 
         StringBuffer stringBuffer = new StringBuffer();
 
-
         try {
             if (NurseService.modifyNurse(nurse)) {
                 stringBuffer.append("{\"statueCode\":\"200\",\"message\":\"成功\"}");
@@ -60,5 +59,6 @@ public class ModifyNurseServlet extends HttpServlet {
             e.printStackTrace();
         }
         resp.getOutputStream().write(stringBuffer.toString().getBytes("utf-8"));
+
     }
 }
