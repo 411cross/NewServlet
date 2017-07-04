@@ -54,7 +54,7 @@ public class ModifyNurseServlet extends HttpServlet {
                 stringBuffer.append("{\"statueCode\":\"200\",\"message\":\"成功\"}");
             } else {
                 resp.setStatus(201);
-                stringBuffer.append("{\"statueCode\":\"100\",\"message\":\"失败\"}");
+                stringBuffer.append("{\"statueCode\":\"201\",\"message\":\"失败\"}");
             }
 
         } catch (SQLException e) {
