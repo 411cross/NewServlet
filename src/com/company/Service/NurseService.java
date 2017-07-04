@@ -24,7 +24,7 @@ public class NurseService {
 
         switch (filter) {
             case 1:
-                String sql = "select n_id from app_range where type =? ";
+                String sql = "select n_id from app_range where area =? ";
 
                 prestate = conn.prepareStatement(sql);
 
@@ -43,7 +43,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql1);
                         ResultSet result1 = prestate.executeQuery();
                         while (result1.next()) {
-                            NurseList.add(GeneralService.getNurse(result1.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result1.getInt("id")));
                         }
                         break;
                     case 2:
@@ -51,7 +51,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql2);
                         ResultSet result2 = prestate.executeQuery();
                         while (result2.next()) {
-                            NurseList.add(GeneralService.getNurse(result2.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result2.getInt("id")));
                         }
                         break;
                     case 3:
@@ -59,7 +59,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql3);
                         ResultSet result3 = prestate.executeQuery();
                         while (result3.next()) {
-                            NurseList.add(GeneralService.getNurse(result3.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result3.getInt("id")));
                         }
                         break;
                     case 4:
@@ -67,7 +67,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql4);
                         ResultSet result4 = prestate.executeQuery();
                         while (result4.next()) {
-                            NurseList.add(GeneralService.getNurse(result4.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result4.getInt("id")));
                         }
                         break;
                 }
@@ -78,7 +78,7 @@ public class NurseService {
                 prestate.setInt(1, position - 1);    ///看位置是不是正确
                 ResultSet result5 = prestate.executeQuery();
                 while (result5.next()) {
-                    NurseList.add(GeneralService.getNurse(result5.getInt("n_id")));
+                    NurseList.add(GeneralService.getNurse(result5.getInt("id")));
                 }
                 break;
             case 4:
@@ -88,7 +88,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql6);
                         ResultSet result6 = prestate.executeQuery();
                         while (result6.next()) {
-                            NurseList.add(GeneralService.getNurse(result6.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result6.getInt("id")));
                         }
                         break;
                     case 2:
@@ -96,7 +96,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql7);
                         ResultSet result7 = prestate.executeQuery();
                         while (result7.next()) {
-                            NurseList.add(GeneralService.getNurse(result7.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result7.getInt("id")));
                         }
                         break;
                     case 3:
@@ -104,7 +104,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql8);
                         ResultSet result8 = prestate.executeQuery();
                         while (result8.next()) {
-                            NurseList.add(GeneralService.getNurse(result8.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result8.getInt("id")));
                         }
                         break;
                     case 4:
@@ -120,7 +120,7 @@ public class NurseService {
                         prestate = conn.prepareStatement(sql10);
                         ResultSet result10 = prestate.executeQuery();
                         while (result10.next()) {
-                            NurseList.add(GeneralService.getNurse(result10.getInt("n_id")));
+                            NurseList.add(GeneralService.getNurse(result10.getInt("id")));
                         }
                         break;
                 }
