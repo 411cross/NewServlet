@@ -27,7 +27,7 @@ public class UserLoginServlet extends HttpServlet{
         User user;
         Gson gson = new Gson();
 
-        if(!(LoginService.userLogin(id, password).equals("11"))){
+        if(!(LoginService.userLogin(id, password).equals(""))){
             resp.setStatus(200);
             user = GeneralService.getUser(LoginService.userLogin(id, password));
             String jsonString = gson.toJson(user);

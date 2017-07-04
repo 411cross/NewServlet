@@ -39,7 +39,7 @@ public class NurseService {
             case 2:
                 switch (position) {
                     case 1:
-                        String sql1 = "select id from app_nurse where work_age<=3 and work>=1 ";
+                        String sql1 = "select id from app_nurse where work_age<=3 and work_age>=1 ";
                         prestate = conn.prepareStatement(sql1);
                         ResultSet result1 = prestate.executeQuery();
                         while (result1.next()) {
@@ -47,7 +47,7 @@ public class NurseService {
                         }
                         break;
                     case 2:
-                        String sql2 = "select id from app_nurse where work_age<=6 and work>=4 ";
+                        String sql2 = "select id from app_nurse where work_age<=6 and work_age>=4 ";
                         prestate = conn.prepareStatement(sql2);
                         ResultSet result2 = prestate.executeQuery();
                         while (result2.next()) {
@@ -55,7 +55,7 @@ public class NurseService {
                         }
                         break;
                     case 3:
-                        String sql3 = "select id from app_nurse where work_age<=9 and work>=7 ";
+                        String sql3 = "select id from app_nurse where work_age<=9 and work_age>=7 ";
                         prestate = conn.prepareStatement(sql3);
                         ResultSet result3 = prestate.executeQuery();
                         while (result3.next()) {
@@ -84,7 +84,7 @@ public class NurseService {
             case 4:
                 switch (position) {
                     case 1:
-                        String sql6 = "select id from app_nurse where evaluation<60 and work>=0 ";
+                        String sql6 = "select id from app_nurse where evaluation<60 and evaluation>=0 ";
                         prestate = conn.prepareStatement(sql6);
                         ResultSet result6 = prestate.executeQuery();
                         while (result6.next()) {
@@ -92,7 +92,7 @@ public class NurseService {
                         }
                         break;
                     case 2:
-                        String sql7 = "select id from app_nurse where evaluation<70 and work>=60 ";
+                        String sql7 = "select id from app_nurse where evaluation<70 and evaluation>=60 ";
                         prestate = conn.prepareStatement(sql7);
                         ResultSet result7 = prestate.executeQuery();
                         while (result7.next()) {
@@ -100,7 +100,7 @@ public class NurseService {
                         }
                         break;
                     case 3:
-                        String sql8 = "select id from app_nurse where evaluation<80 and work>=70 ";
+                        String sql8 = "select id from app_nurse where evaluation<80 and evaluation>=70 ";
                         prestate = conn.prepareStatement(sql8);
                         ResultSet result8 = prestate.executeQuery();
                         while (result8.next()) {
@@ -108,7 +108,7 @@ public class NurseService {
                         }
                         break;
                     case 4:
-                        String sql9 = "select id from app_nurse where evaluation<90 and work>=80 ";
+                        String sql9 = "select id from app_nurse where evaluation<90 and evaluation>=80 ";
                         prestate = conn.prepareStatement(sql9);
                         ResultSet result9 = prestate.executeQuery();
                         while (result9.next()) {
@@ -116,7 +116,7 @@ public class NurseService {
                         }
                         break;
                     case 5:
-                        String sql10 = "select id from app_nurse where evaluation<=100 and work>=90 ";
+                        String sql10 = "select id from app_nurse where evaluation<=100 and evaluation>=90 ";
                         prestate = conn.prepareStatement(sql10);
                         ResultSet result10 = prestate.executeQuery();
                         while (result10.next()) {

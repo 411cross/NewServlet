@@ -31,7 +31,7 @@ public class FilterNurseServlet extends HttpServlet {
 
         try {
             nurseList = NurseService.filterNurse(filter, position);
-            resp.setStatus(200);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
