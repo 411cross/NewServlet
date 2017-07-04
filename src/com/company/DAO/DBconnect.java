@@ -12,10 +12,12 @@ public class DBconnect {
 
     public static Connection getConn() {
         String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/test";
+
+        String dbName = "nurse_app";
         String username = "root";
         String password = "root";
         Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=utf-8";
 
         try {
             Class.forName(driver); //classLoader
@@ -23,7 +25,8 @@ public class DBconnect {
             e.printStackTrace();
         }
         try {
-            conn = (Connection) DriverManager.getConnection(url, username, password);
+            conn = (Connection) DriverManager.getConnection(url);
+            System.out.println(conn);
         } catch (SQLException e) {
             e.printStackTrace();
         }

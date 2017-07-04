@@ -63,11 +63,10 @@
         <servlet-name>adminGetOrder</servlet-name>
         <servlet-class>com.company.Servlet.AdminGetOrderServlet</servlet-class>
     </servlet>
-
-
-
-
-
+    <servlet>
+        <servlet-name>changeOrderSituation</servlet-name>
+        <servlet-class>com.company.Servlet.ChangeOrderSituation</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>searchNurse</servlet-name>
@@ -77,6 +76,11 @@
     <servlet>
         <servlet-name>deleteNurse</servlet-name>
         <servlet-class>com.company.Servlet.DeleteNurseServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>getNurseByType</servlet-name>
+        <servlet-class>com.company.Servlet.GetNurseByTypeServlet</servlet-class>
     </servlet>
 
 
@@ -153,6 +157,17 @@
         <servlet-name>adminGetOrder</servlet-name>
         <url-pattern>/admingetorder</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>changeOrderSituation</servlet-name>
+        <url-pattern>/changeordersituation</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>getNurseByType</servlet-name>
+        <url-pattern>/getnursebyid</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>
