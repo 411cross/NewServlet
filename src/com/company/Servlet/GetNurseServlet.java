@@ -26,7 +26,6 @@ public class GetNurseServlet extends HttpServlet {
 
         try {
             nurseList = NurseService.getNurseList();
-            resp.setStatus(200);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,11 +35,9 @@ public class GetNurseServlet extends HttpServlet {
             resp.setStatus(200);
             String jsonString = gson.toJson(nurseList);
             response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
-            resp.getOutputStream().write(response.getBytes("utf-8"));
         }else {
             resp.setStatus(201);
             response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
-            resp.getOutputStream().write(response.getBytes("utf-8"));
         }
 
         resp.getOutputStream().write(response.getBytes("utf-8"));
