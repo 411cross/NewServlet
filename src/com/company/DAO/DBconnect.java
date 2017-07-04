@@ -13,15 +13,15 @@ public class DBconnect {
     public static Connection getConn() {
         String driver = "com.mysql.jdbc.Driver";
 
-//        String dbName = "nurse_app";
-        String dbName = "test";
+        String dbName = "nurse_app";
+//        String dbName = "test";
 
 
         String username = "root";
         String password = "root";
         Connection conn = null;
-//        String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=utf-8";
         String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=utf-8";
+//        String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=utf-8";
 
 
         try {

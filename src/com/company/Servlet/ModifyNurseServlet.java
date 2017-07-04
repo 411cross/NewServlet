@@ -49,7 +49,7 @@ public class ModifyNurseServlet extends HttpServlet {
         StringBuffer stringBuffer = new StringBuffer();
 
         try {
-            if (NurseService.modifyNurse(nurse)) {
+            if (NurseService.modifyNurse(nurse, id)) {
                 resp.setStatus(200);
                 stringBuffer.append("{\"statueCode\":\"200\",\"message\":\"成功\"}");
             } else {
