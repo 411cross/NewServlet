@@ -237,7 +237,7 @@ public class NurseService {
         *
         * */
 
-    static public boolean modifyNurse(Nurse nurse) throws SQLException {
+    static public boolean modifyNurse(Nurse nurse,int id ) throws SQLException {
         Connection conn = DBconnect.getConn();
 
 
@@ -264,7 +264,7 @@ public class NurseService {
         prestate.setString(14, nurse.getNurseAnimal());
         prestate.setString(15, nurse.getNurseDescription());
         prestate.setString(16, nurse.getNurseArea());
-        prestate.setString(17, nurse.getNurseIdentity());
+        prestate.setInt(17, id);
 
         int i = prestate.executeUpdate();
         int j = 0, z = 0;
