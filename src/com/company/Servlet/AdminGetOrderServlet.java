@@ -32,6 +32,7 @@ public class AdminGetOrderServlet extends HttpServlet{
 
         try {
             orderList = OrderService.adminGetOrder(orderSituation);
+
             resp.setStatus(200);
         } catch (SQLException e) {
             e.printStackTrace();

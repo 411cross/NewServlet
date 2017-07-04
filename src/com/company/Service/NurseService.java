@@ -163,7 +163,7 @@ public class NurseService {
 
         while (result.next()) {
 
-            int area = result.getInt("type");
+            int area = result.getInt("area");
             nurseAreaList.add(area);
 
         }
@@ -456,7 +456,6 @@ public class NurseService {
             nurseList.add(tempNurse);
 
         }
-
 
         return nurseList;
 

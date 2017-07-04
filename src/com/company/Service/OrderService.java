@@ -123,7 +123,7 @@ public class OrderService {
     static public ArrayList<Order> adminGetOrder(String orderSituation) throws SQLException {
 
         ArrayList<Order> orderList = new ArrayList<>();
-        Order tempOrder = new Order();
+
         User tempUser;
         Nurse tempNurse;
         Patient tempPatient;
@@ -154,6 +154,8 @@ public class OrderService {
             int patientID = result.getInt("p_id");
             String userID = result.getString("u_id");
 
+            Order tempOrder = new Order();
+
             tempUser = GeneralService.getUser(userID);
             tempNurse = GeneralService.getNurse(nurseID);
             tempPatient = GeneralService.getPatient(patientID);
@@ -171,6 +173,9 @@ public class OrderService {
 
             orderList.add(tempOrder);
         }
+
+        System.out.println(orderList.get(0).getId());
+        System.out.println(orderList.get(1).getId());
 
         return orderList;
     }
