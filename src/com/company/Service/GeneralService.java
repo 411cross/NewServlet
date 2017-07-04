@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * Created by derrickJ on 2017/6/29.
@@ -146,6 +147,7 @@ public class GeneralService {
                 String animal = result.getString("animal");
                 String description = result.getString("description");
                 String area = result.getString("area");
+                ArrayList<Integer> protectArea = NurseService.getNurseArea(id);
 
                 nurse.setNurseId(id);
                 nurse.setNurseName(name);
@@ -164,8 +166,7 @@ public class GeneralService {
                 nurse.setNurseAnimal(animal);
                 nurse.setNurseDescription(description);
                 nurse.setNurseArea(area);
-
-                System.out.println(nurse.getNurseId() + " " + nurse.getNurseName() + " " + nurse.getNurseEvaluate());
+                nurse.setNurseProtectArea(protectArea);
 
             }
 
