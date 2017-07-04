@@ -465,15 +465,22 @@ public class NurseService {
     static public boolean deleteNurse(int id) throws SQLException {
 
         boolean flag = false;
-
-        String sql = "select * from app_nurse where name =?";
         Connection conn = DBconnect.getConn();
         PreparedStatement prestate;
-        prestate = conn.prepareStatement(sql);
-        prestate.setInt(1, id);
-        int result = prestate.executeUpdate();
 
-        if (result == 1) {
+        String deleteRangeSql = "delete from app_range where n_id =?";
+        prestate = conn.prepareStatement(deleteRangeSql);
+        prestate.setInt(1, id);
+        int rangeResult = prestate.executeUpdate();
+
+        String deleteNurseSql = "delete from app_nurse where id=?";
+        prestate = conn.prepareStatement(deleteNurseSql);
+        prestate.setInt(1, id);
+        int nurseResult = prestate.executeUpdate();
+
+
+
+        if (rangeResult != 0 && nurseResult != 0) {
             flag = true;
         }
 
