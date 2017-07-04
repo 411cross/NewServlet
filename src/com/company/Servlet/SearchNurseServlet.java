@@ -35,10 +35,16 @@ public class SearchNurseServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String jsonString = gson.toJson(nurseList);
-        String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
-
-        resp.getOutputStream().write(response.getBytes("utf-8"));
+        if(nurseList.size() != 0){
+            resp.setStatus(200);
+            String jsonString = gson.toJson(nurseList);
+            String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }else {
+            resp.setStatus(201);
+            String response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }
 
     }
 

@@ -39,8 +39,8 @@ public class AdminLoginServlet extends HttpServlet {
                 resp.setStatus(200);
                 resp.getOutputStream().write(response.getBytes("utf-8"));
             } else {
-                resp.setStatus(100);
-                stringBuffer.append("{\"statueCode\":\"100\",\"message\":\"失败\"}");
+                resp.setStatus(201);
+                stringBuffer.append("{\"statueCode\":\"201\",\"message\":\"失败\"}");
                 resp.getOutputStream().write(stringBuffer.toString().getBytes("utf-8"));
             }
         } catch (SQLException e) {

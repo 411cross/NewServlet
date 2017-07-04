@@ -27,17 +27,26 @@ public class GetPatientServlet extends HttpServlet {
 
         JSONObject jsonObject = GeneralService.toJsonObject(req);
         String userId = jsonObject.getString("id");
+        String response;
 
         try {
-            System.out.println(userId);
             patientList = UserService.getRelatedPatient(userId);
             resp.setStatus(200);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        String jsonString = gson.toJson(patientList);
-        String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+        if(patientList.size() != 0){
+            resp.setStatus(200);
+            String jsonString = gson.toJson(patientList);
+            response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }else {
+            resp.setStatus(201);
+            response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }
+
 
         resp.getOutputStream().write(response.getBytes("utf-8"));
 

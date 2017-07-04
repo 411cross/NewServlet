@@ -28,6 +28,7 @@ public class AdminGetOrderServlet extends HttpServlet{
 
         JSONObject jsonObject = GeneralService.toJsonObject(req);
         String orderSituation = jsonObject.getString("situation");
+        String response;
 
         try {
             orderList = OrderService.adminGetOrder(orderSituation);
@@ -35,9 +36,16 @@ public class AdminGetOrderServlet extends HttpServlet{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        String jsonString = gson.toJson(orderList);
-        String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+        if(orderList.size() != 0){
+            resp.setStatus(200);
+            String jsonString = gson.toJson(orderList);
+            response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }else {
+            resp.setStatus(201);
+            response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }
 
         resp.getOutputStream().write(response.getBytes("utf-8"));
 

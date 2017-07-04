@@ -27,26 +27,17 @@ public class UserLoginServlet extends HttpServlet{
         User user;
         Gson gson = new Gson();
 
-        StringBuffer stringBuffer = new StringBuffer();
-
-//        PrintWriter out = resp.getWriter();
-
-        if(!LoginService.userLogin(id, password).equals("")){
+        if(!(LoginService.userLogin(id, password).equals("11"))){
             resp.setStatus(200);
             user = GeneralService.getUser(LoginService.userLogin(id, password));
             String jsonString = gson.toJson(user);
             String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
             resp.getOutputStream().write(response.getBytes("utf-8"));
-//            out.write("{\"statueCode\":\"200\",\"data\":" + jsonString + "}");
-        }else{
-            resp.setStatus(100);
-            stringBuffer.append("{\"statueCode\":\"100\",\"message\":\"失败\"}");
-            resp.getOutputStream().write(stringBuffer.toString().getBytes("utf-8"));
-            req.setAttribute("result", "failed");
+        }else {
+            resp.setStatus(201);
+            String response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
         }
-
-//        out.flush();
-//        out.close();
 
     }
 

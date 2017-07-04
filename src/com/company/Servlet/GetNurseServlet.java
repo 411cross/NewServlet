@@ -22,6 +22,7 @@ public class GetNurseServlet extends HttpServlet {
 
         Gson gson = new Gson();
         ArrayList<Nurse> nurseList = new ArrayList<>();
+        String response;
 
         try {
             nurseList = NurseService.getNurseList();
@@ -30,8 +31,17 @@ public class GetNurseServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String jsonString = gson.toJson(nurseList);
-        String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+
+        if(nurseList.size() != 0){
+            resp.setStatus(200);
+            String jsonString = gson.toJson(nurseList);
+            response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }else {
+            resp.setStatus(201);
+            response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }
 
         resp.getOutputStream().write(response.getBytes("utf-8"));
 

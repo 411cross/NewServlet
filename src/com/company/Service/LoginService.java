@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 public class LoginService {
     static public String userLogin(String id, String password){
 
-        String flag = "";
+        String flag = "11";
 
         Connection conn = DBconnect.getConn();
 

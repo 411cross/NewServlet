@@ -22,21 +22,30 @@ public class FilterNurseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Gson gson = new Gson();
-        ArrayList<Nurse> NurseList = new ArrayList<>();
+        ArrayList<Nurse> nurseList = new ArrayList<>();
 
         JSONObject jsonObject = GeneralService.toJsonObject(req);
         int filter = jsonObject.getInt("filter");
         int position = jsonObject.getInt("position");
+        String response;
 
         try {
-            NurseList = NurseService.filterNurse(filter, position);
+            nurseList = NurseService.filterNurse(filter, position);
             resp.setStatus(200);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        String jsonString = gson.toJson(NurseList);
-        String response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+        if(nurseList.size() != 0){
+            resp.setStatus(200);
+            String jsonString = gson.toJson(nurseList);
+            response = "{\"statueCode\":\"200\",\"data\":" + jsonString + "}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }else {
+            resp.setStatus(201);
+            response = "{\"statueCode\":\"201\",\"message\":\"失败\"}";
+            resp.getOutputStream().write(response.getBytes("utf-8"));
+        }
 
         resp.getOutputStream().write(response.getBytes("utf-8"));
 

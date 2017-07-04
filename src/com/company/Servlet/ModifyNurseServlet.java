@@ -50,8 +50,10 @@ public class ModifyNurseServlet extends HttpServlet {
 
         try {
             if (NurseService.modifyNurse(nurse)) {
+                resp.setStatus(200);
                 stringBuffer.append("{\"statueCode\":\"200\",\"message\":\"成功\"}");
             } else {
+                resp.setStatus(201);
                 stringBuffer.append("{\"statueCode\":\"100\",\"message\":\"失败\"}");
             }
 

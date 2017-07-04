@@ -30,8 +30,8 @@ public class DeleteNurseServlet extends HttpServlet {
                 resp.setStatus(200);
                 stringBuffer.append("{\"statueCode\":\"200\",\"message\":\"成功\"}");
             } else {
-                resp.setStatus(100);
-                stringBuffer.append("{\"statueCode\":\"100\",\"message\":\"失败\"}");
+                resp.setStatus(201);
+                stringBuffer.append("{\"statueCode\":\"201\",\"message\":\"失败\"}");
             }
         } catch (SQLException e) {
             e.printStackTrace();

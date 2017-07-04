@@ -23,13 +23,22 @@ public class AddFamilyRelationServlet extends HttpServlet {
         String u_id = jsonObject.getString("u_id");
         int p_id = jsonObject.getInt("p_id");
         StringBuffer stringBuffer = new StringBuffer();
+        String response;
+
         try {
             Message = UserService.addFamilyRelationship(u_id,p_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        stringBuffer.append(Message);
+        if(Message.isEmpty()){
+            resp.setStatus(200);
+            stringBuffer.append(Message);
+        }else {
+            resp.setStatus(201);
+            stringBuffer.append("{\"statueCode\":\"201\",\"message\":\"失败\"}");
+        }
+
         resp.getOutputStream().write(stringBuffer.toString().getBytes("utf-8"));
 
     }
