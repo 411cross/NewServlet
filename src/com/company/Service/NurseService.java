@@ -184,8 +184,8 @@ public class NurseService {
 
         String sql = "insert into app_nurse(name,sex,age,work_age,price,evaluation,phone,height,weight,blood_type,nation,identity,constellation,animal,description,area) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //        String sql1 = "select max(id) FROM app_nurse";
-        String sql1 = "select LAST_INSERT_ID";
-        String sql2 = "insert into app_range(n_id,type) values(?,?) ";
+        String sql1 = "select max(id) from app_nurse";
+        String sql2 = "insert into app_range(n_id,area) values(?,?) ";
         prestate = (PreparedStatement) conn.prepareStatement(sql);
 
 
@@ -209,13 +209,14 @@ public class NurseService {
 
         int i = prestate.executeUpdate();
         int j = 0;
-        int id;
+        int id = -1;
 
         prestate = (PreparedStatement) conn.prepareStatement(sql1);
         ResultSet result = prestate.executeQuery();
 
-        id = result.getInt(1);
-
+        while (result.next()) {
+            id = result.getInt("max(id)");
+        }
 
         prestate = (PreparedStatement) conn.prepareStatement(sql2);
 
