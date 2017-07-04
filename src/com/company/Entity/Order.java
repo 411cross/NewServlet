@@ -13,7 +13,7 @@ public class Order {
     private int situation; //订单状态: 0.未付款 1.已付款 2.已取消 3.已完成 4.进行中 5.已提醒付款
     private int choseNurse = 1;
 
-    private Nurse nurse = null;
+    private Nurse nurse = new Nurse();
     private Patient patient = null;
     private User user = null;
 
