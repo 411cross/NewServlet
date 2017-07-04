@@ -177,17 +177,17 @@ public class NurseService {
         * */
 
     static public boolean addNurse(Nurse nurse) throws SQLException {
-        Connection conn = DBconnect.getConn();
 
+        System.out.println("TESTETSTETSTE");
+
+        Connection conn = DBconnect.getConn();
 
         PreparedStatement prestate;
 
         String sql = "insert into app_nurse(name,sex,age,work_age,price,evaluation,phone,height,weight,blood_type,nation,identity,constellation,animal,description,area) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//        String sql1 = "select max(id) FROM app_nurse";
-        String sql1 = "select LAST_INSERT_ID";
-        String sql2 = "insert into app_range(n_id,type) values(?,?) ";
+        String sql1 = "select max(id) from app_nurse";
+        String sql2 = "insert into app_range(n_id,area) values(?,?) ";
         prestate = (PreparedStatement) conn.prepareStatement(sql);
-
 
         prestate.setString(1, nurse.getNurseName());
         prestate.setInt(2, nurse.getNurseSex());
@@ -206,16 +206,17 @@ public class NurseService {
         prestate.setString(15, nurse.getNurseDescription());
         prestate.setString(16, nurse.getNurseArea());
 
-
         int i = prestate.executeUpdate();
         int j = 0;
-        int id;
+        int id = -1;
+
 
         prestate = (PreparedStatement) conn.prepareStatement(sql1);
         ResultSet result = prestate.executeQuery();
 
-        id = result.getInt(1);
-
+        while (result.next()) {
+            id = result.getInt("max(id)");
+        }
 
         prestate = (PreparedStatement) conn.prepareStatement(sql2);
 
@@ -457,7 +458,6 @@ public class NurseService {
 
         }
 
-
         return nurseList;
 
     }
@@ -465,15 +465,22 @@ public class NurseService {
     static public boolean deleteNurse(int id) throws SQLException {
 
         boolean flag = false;
-
-        String sql = "select * from app_nurse where name =?";
         Connection conn = DBconnect.getConn();
         PreparedStatement prestate;
-        prestate = conn.prepareStatement(sql);
-        prestate.setInt(1, id);
-        int result = prestate.executeUpdate();
 
-        if (result == 1) {
+        String deleteRangeSql = "delete from app_range where n_id =?";
+        prestate = conn.prepareStatement(deleteRangeSql);
+        prestate.setInt(1, id);
+        int rangeResult = prestate.executeUpdate();
+
+        String deleteNurseSql = "delete from app_nurse where id=?";
+        prestate = conn.prepareStatement(deleteNurseSql);
+        prestate.setInt(1, id);
+        int nurseResult = prestate.executeUpdate();
+
+
+
+        if (rangeResult != 0 && nurseResult != 0) {
             flag = true;
         }
 

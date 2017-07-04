@@ -21,7 +21,6 @@ public class DBconnect {
         String password = "root";
         Connection conn = null;
         String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=utf-8";
-//        String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=utf-8";
 
 
         try {
