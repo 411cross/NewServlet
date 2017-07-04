@@ -177,17 +177,17 @@ public class NurseService {
         * */
 
     static public boolean addNurse(Nurse nurse) throws SQLException {
-        Connection conn = DBconnect.getConn();
 
+        System.out.println("TESTETSTETSTE");
+
+        Connection conn = DBconnect.getConn();
 
         PreparedStatement prestate;
 
         String sql = "insert into app_nurse(name,sex,age,work_age,price,evaluation,phone,height,weight,blood_type,nation,identity,constellation,animal,description,area) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//        String sql1 = "select max(id) FROM app_nurse";
         String sql1 = "select max(id) from app_nurse";
         String sql2 = "insert into app_range(n_id,area) values(?,?) ";
         prestate = (PreparedStatement) conn.prepareStatement(sql);
-
 
         prestate.setString(1, nurse.getNurseName());
         prestate.setInt(2, nurse.getNurseSex());
@@ -206,10 +206,10 @@ public class NurseService {
         prestate.setString(15, nurse.getNurseDescription());
         prestate.setString(16, nurse.getNurseArea());
 
-
         int i = prestate.executeUpdate();
         int j = 0;
         int id = -1;
+
 
         prestate = (PreparedStatement) conn.prepareStatement(sql1);
         ResultSet result = prestate.executeQuery();
