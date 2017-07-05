@@ -65,7 +65,7 @@
     </servlet>
     <servlet>
         <servlet-name>changeOrderSituation</servlet-name>
-        <servlet-class>com.company.Servlet.ChangeOrderSituation</servlet-class>
+        <servlet-class>com.company.Servlet.ChangeOrderSituationServlet</servlet-class>
     </servlet>
 
     <servlet>
@@ -81,6 +81,11 @@
     <servlet>
         <servlet-name>getNurseByType</servlet-name>
         <servlet-class>com.company.Servlet.GetNurseByTypeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>chooseNurseForPatient</servlet-name>
+        <servlet-class>com.company.Servlet.ChooseNurseForPatientServlet</servlet-class>
     </servlet>
 
 
@@ -166,6 +171,11 @@
     <servlet-mapping>
         <servlet-name>getNurseByType</servlet-name>
         <url-pattern>/getnursebyid</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>chooseNurseForPatient</servlet-name>
+        <url-pattern>/choosenurseforpatient</url-pattern>
     </servlet-mapping>
 
 

@@ -95,20 +95,19 @@ public class OrderService {
 
         Connection conn = DBconnect.getConn();
         PreparedStatement prestate;
-        String sql = "insert into app_order (id, total_price, create_time, service_time, " +
+        String sql = "insert into app_order (total_price, create_time, service_time, " +
                 "type, situation, chose_nurse, n_id, p_id, u_id) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         prestate = conn.prepareStatement(sql);
-        prestate.setInt(1, id);
-        prestate.setInt(2, totalPrice);
-        prestate.setString(3, createTime);
-        prestate.setString(4, serviceTime);
-        prestate.setInt(5, type);
-        prestate.setInt(6, situation);
-        prestate.setInt(7, choseNurse);
-        prestate.setInt(8, nurseID);
-        prestate.setInt(9, patientID);
-        prestate.setString(10, userID);
+        prestate.setInt(1, totalPrice);
+        prestate.setString(2, createTime);
+        prestate.setString(3, serviceTime);
+        prestate.setInt(4, type);
+        prestate.setInt(5, situation);
+        prestate.setInt(6, choseNurse);
+        prestate.setInt(7, nurseID);
+        prestate.setInt(8, patientID);
+        prestate.setString(9, userID);
 
         int result = prestate.executeUpdate();
         if (result == 1){
@@ -190,6 +189,26 @@ public class OrderService {
         String sql = "update app_order set situation=? where id =?";
         prestate = (PreparedStatement) conn.prepareStatement(sql);
         prestate.setInt(1, situation);
+        prestate.setInt(2, id);
+
+        int i = prestate.executeUpdate();//返回更新数目的条数
+        if (i == 1) flag = true;
+        else flag = false;
+
+        return flag;
+
+    }
+
+    static public boolean chooseNurseForPatient(int id, int nurseId) throws SQLException {
+
+        boolean flag = false;
+        Connection conn = DBconnect.getConn();
+
+        PreparedStatement prestate;
+
+        String sql = "update app_order set n_id=? where id =?";
+        prestate = (PreparedStatement) conn.prepareStatement(sql);
+        prestate.setInt(1, nurseId);
         prestate.setInt(2, id);
 
         int i = prestate.executeUpdate();//返回更新数目的条数

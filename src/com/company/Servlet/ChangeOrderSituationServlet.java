@@ -16,7 +16,7 @@ import java.sql.SQLException;
 /**
  * Created by derrickJ on 2017/7/3.
  */
-public class ChangeOrderSituation extends HttpServlet {
+public class ChangeOrderSituationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
